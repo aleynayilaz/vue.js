@@ -1,0 +1,35 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <button @click="showBox = !showBox">Show/Hide</button>
+        <p v-if="showBox">Will be displayed when this page is opened</p>
+        <p v-else-if="!showBox">This page will not be displayed when opened. will be displayed when the button is
+            pressed.
+        </p>
+        <p v-else>Otherwise it will appear</p>
+
+    </div>
+
+
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                showBox: false,
+
+
+            }
+        });
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,114 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<style>
+    ul {
+        margin-top: 0px;
+        margin: 0px;
+        padding: 0px;
+        list-style-type: none;
+        width: 300px;
+
+
+    }
+
+    li {
+        padding: 5px 5px;
+        margin-bottom: 5px;
+        border-bottom: 1px solid #ccc;
+        text-align: left;
+
+    }
+
+    .red {
+        background-color: coral;
+    }
+
+    .green {
+        background-color: limegreen;
+    }
+</style>
+
+<body>
+
+    <div id="app">
+        <ul>
+            <li v-for="item in list">{{item}}</li>
+        </ul>
+        <hr>
+        <div v-for="(value , key) in employee">
+            <strong>{{key}}</strong> <span>{{value}}</span>
+        </div>
+        <hr>
+        Number : <input type="text" v-model="sellCount" />
+        <ul>
+            <li v-for="product in productList" :class="backgroundByCount(product)">
+                <span>{{product.title}} - {{product.count}} </span>
+                <button :disabled="product.count == 0" @click="sellProduct(product)">Sell</button>
+            </li>
+            <p v-if="sellWarning" style="color:red; font-weight: bold;">The quantity you entered is more than the stock
+                quantity...</p>
+        </ul>
+
+    </div>
+
+
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                sellCount: 0,
+                sellWarning: false,
+                list: ["Apple", "Pear", "Chery"],
+                employee: {
+                    name: "Aleyna",
+                    lastname: "Yılmaz",
+                    email: "yilazaleyna.56@gmail.com"
+                },
+                productList: [
+                    {
+                        title: "Mackbook Pro",
+                        price: 100,
+                        count: 0
+                    },
+                    {
+                        title: "Iphone",
+                        price: 50,
+                        count: 100
+                    },
+                    {
+                        title: "Keyboard",
+                        price: 10,
+                        count: 1000
+                    },
+                ]
+            },
+            methods: {
+                sellProduct(product) {
+                    if (this.sellCount > product.count) {
+                        this.sellWarning = true
+
+                    } else {
+                        product.count = product.count - this.sellCount
+                        this.sellWarning = false
+
+                    }
+
+
+                },
+                backgroundByCount(product) {
+                    return { 'green': product.count > 0, 'red': product.count <= 0 }
+                }
+            },
+
+
+        });
+
+    </script>
+</body>
+
+</html>
