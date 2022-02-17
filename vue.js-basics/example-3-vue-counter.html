@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Counter</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <div id="app" class="container flex justify-center rounded-2xl border-2 border-gray-400 mx-auto p-5  m-4 max-w-xl">
+        <div class="flex mt-10  text-center ">
+            <div class="mb-4">
+                <h3 class="text-5xl">{{counter}}</h3>
+                <button @click="counter--" class="border-r rounded-md text-3xl bg-red-400 px-4 mb-4">-</button>
+                <button @click="counter++" class="border-r rounded-md text-3xl bg-blue-400 px-4">+</button>
+            </div>
+            <div class="alert ">
+                {{getCounterResult}}
+                <!-- {{counter > 5? 'Big' : 'Small'}}   ilk yol -->
+            </div>
+            <div class="mb-4 ml-10">
+                <h3 class="text-5xl">{{counter2}}</h3>
+                <button @click="counter2--" class="border-r rounded-md text-3xl bg-red-400 px-4 mb-4">-</button>
+                <button @click="counter2++" class="border-r rounded-md text-3xl bg-blue-400 px-4">+</button>
+            </div>
+            <div class="alert ">
+                {{getCounter2Result}}
+                <!-- {{counter > 5? 'Big' : 'Small'}}   ilk yol -->
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    counter: 0,
+                    counter2: 0,
+                };
+            },
+            methods: {
+
+            },
+            computed: {
+                getCounterResult() {
+                    console.log("Counter 1 working")
+                    return this.counter > 5 ? "Big" : "Small";
+                },
+                getCounter2Result() {
+                    console.log("Counter 2 working")
+                    return this.counter2 > 5 ? "Big" : "Small";
+
+                },
+
+            },
+            // methods: {
+            //     inc() {
+            //         this.counter++;
+            //     },
+            //     dec() {
+            //         this.counter--;
+            //     },
+            // },
+        }).mount("#app");
+    </script>
+
+</body>
+
+</html>

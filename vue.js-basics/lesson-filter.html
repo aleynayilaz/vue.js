@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <input type="number" v-model.number="ageValue">
+            <button @click="filterAge">Filtered</button>
+        </div>
+        <ul v-if="filterList.length ">
+            <h3>Filter List</h3>
+            <li v-for="item in filterList" :key="item.id">{{item.name}} {{item.age}}</li>
+        </ul>
+        <p v-else>data none</p>
+        <ul>
+            <h3>All list</h3>
+            <li v-for="item in list" :key="item.id">{{item.name}} {{item.age}}</li>
+        </ul>
+    </div>
+
+
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    list: [
+                        { id: 1, name: "John", age: 20 },
+                        { id: 2, name: "Peter", age: 30 },
+                        { id: 3, name: "Leyla", age: 50 },
+                        { id: 4, name: "Ali", age: 60 },
+
+                    ],
+                    ageValue: 0,
+                    filterList: []
+
+                };
+            },
+            methods: {
+                filterAge() {
+                    this.filterList = this.list.filter(item => item.age > this.ageValue)
+                },
+
+            },
+
+        }).mount("#app")
+
+
+    </script>
+</body>
+
+</html>

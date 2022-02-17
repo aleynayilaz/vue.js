@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div id="app"
+        class="container container flex justify-center rounded-2xl border-2 border-gray-400 mx-auto p-5  m-4 max-w-xl">
+        <div class="flex">
+            <div class="">
+                <input class="border-2" type="text" v-model="search">
+                <button @click=" searchList">Search</button>
+                <pre>
+                   {{itemList}}
+               </pre>
+                <pre>
+                  {{filteredList}}
+            </pre>
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    search: "",
+                    itemList: ["apple", "pear", "cheryy", "strawberry"],
+                    // filteredList: [],
+
+                };
+            },
+            methods: {
+                searchList() {
+                },
+            },
+            computed: {
+                filteredList() {
+                    return this.filteredList = this.itemList.filter((i) => i.includes(this.search));
+                },
+            },
+        }).mount("#app");
+
+
+    </script>
+</body>
+
+</html>

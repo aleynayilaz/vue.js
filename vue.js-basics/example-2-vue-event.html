@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div class="">
+            <h3 class="">Event</h3>
+            <!-- <input @input="fullName = $event.target.value" :value="fullName" type="text" class="form-control" /> -->
+            <input v-model="fullName" type="text" class="form-control" />
+            {{ fullName}}
+            <br />
+            <button class="">Add</button>
+        </div>
+    </div>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    fullName: "",
+                };
+            },
+            methods: {
+                updateValue(tryevent) {
+                    this.fullName = tryevent.target.value;
+                },
+            },
+        }).mount("#app");
+    </script>
+</body>
+
+</html>
